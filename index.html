@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Altaf Alam | Official Profile & Portfolio</title>
+  <meta name="description" content="Official personal portfolio and profile of Altaf Alam. BCA Graduate from MMHAP University, Patna, Bihar. Tech enthusiast, explorer, and fitness devotee.">
+  <meta name="keywords" content="Altaf Alam, Altaf Ansari, MMHAP University, BCA, Katihar, Patna, Bihar, Portfolio, Tech, Fitness">
+  <meta name="author" content="Altaf Alam">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Altaf Alam | Official Profile & Portfolio">
+  <meta property="og:description" content="Explore the official journey, academic roadmap, passions, and chronicles of Altaf Alam.">
+  <meta property="og:image" content="assets/images/photo3_gym_dramatic.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon icon representation -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#07090e',
+            'obsidian-light': '#0d1321',
+            'obsidian-card': '#111827',
+            cyanGlow: '#00f2fe',
+            blueGlow: '#4facfe',
+            purpleGlow: '#7928ca',
+            goldGlow: '#f59e0b',
+          },
+          fontFamily: {
+            display: ['Outfit', 'sans-serif'],
+            cinematic: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          animation: {
+            'spin-slow': 'spin 12s linear infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-[#07090e] text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-300 relative min-h-screen">
+
+  <!-- Film Grain Overlay for Cinematic Atmosphere -->
+  <div class="film-grain"></div>
+
+  <!-- Interactive Dynamic Particle Canvas -->
+  <canvas id="particleCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <!-- Cursor Spotlight Effect -->
+  <div id="cursorSpotlight" class="cursor-spotlight"></div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="fixed top-0 left-0 w-full h-[3px] bg-slate-900/60 z-50">
+    <div id="scrollProgress" class="h-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 w-0 transition-all duration-75 shadow-[0_0_10px_#00f2fe]"></div>
+  </div>
+
+  <!-- =============================================================
+       CINEMATIC PRELOADER
+  ============================================================= -->
+  <div id="preloader" class="fixed inset-0 bg-[#05070b] z-[100] flex flex-col items-center justify-center p-6 select-none">
+    <div class="relative flex flex-col items-center max-w-md w-full">
+      <!-- Animated Emblem -->
+      <div class="relative w-20 h-20 mb-8 flex items-center justify-center">
+        <div class="absolute inset-0 rounded-2xl border border-cyan-500/30 animate-spin-slow"></div>
+        <div class="absolute inset-2 rounded-xl border border-purple-500/40 rotate-45"></div>
+        <span class="font-cinematic text-3xl font-black tracking-widest text-gradient-cyan">AA</span>
+      </div>
+
+      <div class="font-display font-bold text-2xl tracking-[0.3em] uppercase text-slate-200 mb-2">ALTAF ALAM</div>
+      <div class="text-xs font-mono tracking-widest text-cyan-400 uppercase mb-8">Official Identity & Portfolio</div>
+
+      <!-- Loading Bar -->
+      <div class="w-full bg-slate-800/80 rounded-full h-1.5 overflow-hidden border border-white/5 relative">
+        <div id="preloaderProgress" class="bg-gradient-to-r from-cyan-400 to-purple-500 h-full w-0 transition-all duration-150"></div>
+      </div>
+
+      <div class="flex justify-between w-full mt-3 text-xs font-mono text-slate-500">
+        <span>INITIALIZING EXPERIENCE</span>
+        <span id="preloaderNumber" class="text-cyan-400">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-orb w-[600px] h-[600px] bg-cyan-500/10 top-[-100px] left-[-200px]"></div>
+  <div class="ambient-orb w-[700px] h-[700px] bg-purple-600/10 top-[40%] right-[-250px]"></div>
+  <div class="ambient-orb w-[600px] h-[600px] bg-blue-600/10 bottom-[10%] left-[-200px]"></div>
+
+  <!-- =============================================================
+       FLOATING NAVIGATION DOCK
+  ============================================================= -->
+  <header class="fixed top-5 inset-x-0 z-40 flex justify-center px-4">
+    <nav class="glass-panel-glow rounded-full px-5 py-3 flex items-center justify-between w-full max-w-6xl shadow-2xl transition-all duration-300">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-cyan-500 to-purple-600 p-[1.5px] shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-[#07090e] rounded-full flex items-center justify-center">
+            <span class="font-cinematic font-extrabold text-sm text-gradient-cyan">AA</span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-sm tracking-wider text-slate-100 group-hover:text-cyan-400 transition-colors">ALTAF ALAM</span>
+          <span class="text-[9px] font-mono tracking-widest text-cyan-400/80 uppercase">Official Profile</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <div class="hidden lg:flex items-center gap-7 text-xs font-medium tracking-wider text-slate-300 uppercase">
+        <a href="#about" class="hover:text-cyan-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 hover:after:w-full after:transition-all">About</a>
+        <a href="#journey" class="hover:text-cyan-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 hover:after:w-full after:transition-all">Journey</a>
+        <a href="#family" class="hover:text-cyan-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 hover:after:w-full after:transition-all">Family</a>
+        <a href="#passions" class="hover:text-cyan-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 hover:after:w-full after:transition-all">Passions</a>
+        <a href="#gallery" class="hover:text-cyan-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 hover:after:w-full after:transition-all">Gallery</a>
+        <a href="#contact" class="hover:text-cyan-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 hover:after:w-full after:transition-all">Connect</a>
+      </div>
+
+      <!-- Action Utilities: Quick CTA & Mobile Menu -->
+      <div class="flex items-center gap-3">
+        <!-- Direct Contact Quick Link -->
+        <a href="https://wa.me/919122013960?text=Hello%20Altaf,%20I%20found%20your%20official%20profile%20and%20wanted%20to%20connect!" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-mono text-emerald-300 hover:bg-emerald-500/20 transition-all">
+          <i class="fab fa-whatsapp text-emerald-400"></i>
+          <span>+91 9122013960</span>
+        </a>
+
+        <!-- CTA Button -->
+        <a href="#contact" class="btn-cinematic flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-xs font-semibold text-slate-950 hover:brightness-110 shadow-lg shadow-cyan-500/25">
+          <span>Get In Touch</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-full bg-slate-800/80 text-slate-300 hover:text-cyan-400" aria-label="Toggle menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden fixed top-20 inset-x-4 glass-panel rounded-2xl p-6 border border-cyan-500/20 shadow-2xl transition-all">
+      <div class="flex flex-col gap-4 text-center text-sm font-semibold tracking-wider uppercase text-slate-200">
+        <a href="#about" class="mobile-nav-link hover:text-cyan-400 py-2 border-b border-white/5">About</a>
+        <a href="#journey" class="mobile-nav-link hover:text-cyan-400 py-2 border-b border-white/5">Journey & Education</a>
+        <a href="#family" class="mobile-nav-link hover:text-cyan-400 py-2 border-b border-white/5">Family Circle</a>
+        <a href="#passions" class="mobile-nav-link hover:text-cyan-400 py-2 border-b border-white/5">Passions & Hobbies</a>
+        <a href="#gallery" class="mobile-nav-link hover:text-cyan-400 py-2 border-b border-white/5">Photo Chronicles</a>
+        <a href="#contact" class="mobile-nav-link hover:text-cyan-400 py-2">Connect</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============================================================
+       HERO SECTION (CINEMATIC DOWN-SWIPING EXPERIENCE)
+  ============================================================= -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-4 md:px-8 overflow-hidden">
+    
+    <!-- Background Floating Glow Grid -->
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:32px_32px] opacity-25 pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      
+      <!-- Left Column: Kinetic Typography & Bio Details -->
+      <div id="heroContent" class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+        
+        <!-- Live Status Badge -->
+        <div id="heroBadge" class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 backdrop-blur-md mb-6 shadow-lg shadow-cyan-500/10">
+          <span class="pulse-beacon w-2 h-2 rounded-full bg-cyan-400"></span>
+          <span class="text-xs font-mono text-cyan-300 tracking-wider uppercase">BCA Graduate • Pursuing Master's Degree</span>
+        </div>
+
+        <!-- Dramatic Headline -->
+        <h1 class="font-display font-black text-5xl sm:text-6xl md:text-7xl xl:text-8xl tracking-tight leading-[0.95] mb-6">
+          <span class="block overflow-hidden">
+            <span class="hero-title-line block text-gradient-white">ALTAF</span>
+          </span>
+          <span class="block overflow-hidden">
+            <span class="hero-title-line block text-gradient-cyan">ALAM</span>
+          </span>
+        </h1>
+
+        <!-- Subtitle & Persona Summary -->
+        <p id="heroSubtitle" class="text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed mb-8 font-light">
+          An ambitious tech aspirant with a <span class="text-slate-100 font-medium">BCA from MMHAP University, Patna</span>, blending a passion for computing, relentless gym discipline, cinematic curiosity, and a spirit hungry for exploring new horizons.
+        </p>
+
+        <!-- CTAs -->
+        <div id="heroCta" class="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-12">
+          <a href="#journey" class="btn-cinematic px-7 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-slate-950 font-bold text-sm tracking-wider uppercase shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/40 flex items-center gap-3">
+            <span>Explore Journey</span>
+            <i data-lucide="compass" class="w-4 h-4"></i>
+          </a>
+
+          <button id="heroVcardBtn" class="px-6 py-3.5 rounded-xl glass-panel hover:bg-slate-800/80 border border-slate-700 text-slate-200 font-semibold text-sm tracking-wider flex items-center gap-2.5 transition-all hover:border-cyan-500/40">
+            <i data-lucide="download" class="w-4 h-4 text-cyan-400"></i>
+            <span>Save Contact (.vcf)</span>
+          </button>
+        </div>
+
+        <!-- Highlights Grid -->
+        <div id="heroStats" class="grid grid-cols-3 gap-4 sm:gap-8 pt-6 border-t border-slate-800/80 w-full max-w-lg">
+          <div>
+            <div class="font-display font-extrabold text-2xl sm:text-3xl text-cyan-400">BCA</div>
+            <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">MMHAP University</div>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-2xl sm:text-3xl text-purple-400">7+</div>
+            <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Academic Phases</div>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-2xl sm:text-3xl text-goldGlow">100%</div>
+            <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Discipline & Drive</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: 3D Tilt Hero Portrait with Spotlight Backdrop -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div id="heroImageWrapper" class="relative tilt-card w-full max-w-md">
+          
+          <!-- Outer Neon Ambient Halo -->
+          <div class="absolute -inset-2 bg-gradient-to-tr from-cyan-500/30 via-purple-600/30 to-blue-500/30 rounded-3xl blur-2xl opacity-75 animate-pulse-slow"></div>
+
+          <!-- Glass Frame Container -->
+          <div class="relative rounded-3xl p-2.5 glass-panel-glow border border-cyan-500/30 shadow-2xl overflow-hidden group">
+            
+            <!-- Hero Image Tag (Featuring dramatic gym lighting portrait) -->
+            <div class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900">
+              <img id="heroImage" src="assets/images/photo3_gym_dramatic.jpg" alt="Altaf Alam Official Portrait" class="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105">
+              
+              <!-- Subtle inner gradient vignette -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#07090e] via-transparent to-transparent opacity-70"></div>
+              
+              <!-- Floating Corner Badges -->
+              <div class="absolute bottom-4 left-4 right-4 tilt-child">
+                <div class="glass-panel rounded-xl p-3.5 border border-white/10 backdrop-blur-xl shadow-xl flex items-center justify-between">
+                  <div>
+                    <div class="text-xs font-mono text-cyan-400 uppercase tracking-widest font-semibold">Origin & Roots</div>
+                    <div class="text-sm font-bold text-slate-100">Katihar & Patna, Bihar</div>
+                  </div>
+                  <span class="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Floating Badges on 3D Plane -->
+          <div class="absolute -top-4 -right-4 glass-panel px-3.5 py-2 rounded-xl border border-cyan-500/30 shadow-xl hidden sm:flex items-center gap-2 tilt-child">
+            <i data-lucide="award" class="w-4 h-4 text-cyan-400"></i>
+            <span class="text-xs font-mono text-slate-200">Official Profile</span>
+          </div>
+
+          <div class="absolute -bottom-4 -left-4 glass-panel px-3.5 py-2 rounded-xl border border-purple-500/30 shadow-xl hidden sm:flex items-center gap-2 tilt-child">
+            <i data-lucide="dumbbell" class="w-4 h-4 text-purple-400"></i>
+            <span class="text-xs font-mono text-slate-200">Fitness & Iron Sanctuary</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Down Swipe / Scroll Prompter -->
+    <div class="absolute bottom-6 inset-x-0 flex flex-col items-center justify-center gap-2 pointer-events-none opacity-80">
+      <span class="text-[10px] font-mono tracking-[0.25em] text-cyan-400/80 uppercase">SWIPE DOWN TO EXPLORE</span>
+      <div class="w-5 h-9 rounded-full border border-cyan-500/30 flex justify-center p-1">
+        <div class="w-1 h-2 bg-cyan-400 rounded-full animate-bounce"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       INFINITE HORIZONTAL MARQUEE
+  ============================================================= -->
+  <div class="py-6 border-y border-slate-800/80 bg-slate-950/60 overflow-hidden relative">
+    <div class="marquee-wrapper">
+      <div class="marquee-content flex items-center gap-12 font-display text-sm font-bold tracking-[0.2em] uppercase text-slate-400">
+        <span class="flex items-center gap-3"><i data-lucide="sparkles" class="w-4 h-4 text-cyan-400"></i> ALTAF ALAM</span>
+        <span>•</span>
+        <span class="flex items-center gap-3"><i data-lucide="code" class="w-4 h-4 text-purple-400"></i> COMPUTER APPLICATIONS</span>
+        <span>•</span>
+        <span class="flex items-center gap-3"><i data-lucide="graduation-cap" class="w-4 h-4 text-cyan-400"></i> MMHAP UNIVERSITY PATNA</span>
+        <span>•</span>
+        <span class="flex items-center gap-3"><i data-lucide="dumbbell" class="w-4 h-4 text-pink-400"></i> GYM & BODYBUILDING</span>
+        <span>•</span>
+        <span class="flex items-center gap-3"><i data-lucide="compass" class="w-4 h-4 text-goldGlow"></i> SOJOURNING & TRAVEL</span>
+        <span>•</span>
+        <span class="flex items-center gap-3"><i data-lucide="film" class="w-4 h-4 text-blueGlow"></i> CINEMA & MOVIES</span>
+        <span>•</span>
+        <span class="flex items-center gap-3"><i data-lucide="flame" class="w-4 h-4 text-emerald-400"></i> PURSUING MASTER'S</span>
+        <span>•</span>
+      </div>
+      <!-- Cloned for infinite seamless loop -->
+      <div class="marquee-content flex items-center gap-12 font-display text-sm font-bold tracking-[0.2em] uppercase text-slate-400" aria-hidden="true">
+        <span class="flex items-center gap-3"><i data-lucide="sparkles" class="w-4 h-4 text-cyan-400"></i> ALTAF ALAM</span>
+        <span>•</span>
+        <span class="flex items-center gap-3"><i data-lucide="code" class="w-4 h-4 text-purple-400"></i> COMPUTER APPLICATIONS</span>
+        <span>•</span>
+        <span class="flex items-center gap-3"><i data-lucide="graduation-cap" class="w-4 h-4 text-cyan-400"></i> MMHAP UNIVERSITY PATNA</span>
+        <span>•</span>
+        <span class="flex items-center gap-3"><i data-lucide="dumbbell" class="w-4 h-4 text-pink-400"></i> GYM & BODYBUILDING</span>
+        <span>•</span>
+        <span class="flex items-center gap-3"><i data-lucide="compass" class="w-4 h-4 text-goldGlow"></i> SOJOURNING & TRAVEL</span>
+        <span>•</span>
+        <span class="flex items-center gap-3"><i data-lucide="film" class="w-4 h-4 text-blueGlow"></i> CINEMA & MOVIES</span>
+        <span>•</span>
+        <span class="flex items-center gap-3"><i data-lucide="flame" class="w-4 h-4 text-emerald-400"></i> PURSUING MASTER'S</span>
+        <span>•</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================================
+       ABOUT ME & PHILOSOPHY
+  ============================================================= -->
+  <section id="about" class="py-28 px-4 md:px-8 relative">
+    <div class="section-watermark">ABOUT</div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      
+      <!-- Section Header -->
+      <div class="reveal-title mb-16 text-center md:text-left">
+        <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 tracking-[0.2em] uppercase mb-3">
+          <span class="w-6 h-px bg-cyan-400"></span>
+          <span>01 // THE PERSONA</span>
+        </div>
+        <h2 class="font-display font-extrabold text-4xl md:text-5xl text-slate-100">
+          Rooted in Values, Driven by <span class="text-gradient-cyan">Ambition</span>.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Image Showcase with Levi's Studio Look -->
+        <div class="lg:col-span-5 reveal-item">
+          <div class="relative tilt-card mx-auto max-w-sm">
+            <div class="relative rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl glass-panel group">
+              <img src="assets/images/photo1_studio.jpg" alt="Altaf Alam Studio Portrait" class="w-full h-[480px] object-cover object-top transition-transform duration-700 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#07090e] via-transparent to-transparent opacity-80"></div>
+              
+              <div class="absolute bottom-5 inset-x-5">
+                <div class="font-cinematic text-lg font-bold text-slate-100">Altaf Alam</div>
+                <div class="text-xs font-mono text-cyan-400">Katihar & Patna • Tech Aspirant</div>
+              </div>
+            </div>
+            
+            <!-- Glow Accents -->
+            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none"></div>
+          </div>
+        </div>
+
+        <!-- Right: Narrative Bio & Pillars -->
+        <div class="lg:col-span-7 space-y-6 reveal-item text-slate-300">
+          <p class="text-lg md:text-xl font-light text-slate-200 leading-relaxed">
+            Hello, I am <strong class="text-white font-semibold">Altaf Alam</strong>. Raised in <span class="text-cyan-300 font-medium">Katihar, Bihar</span> and having pursued higher education in <span class="text-cyan-300 font-medium">Patna</span>, I have dedicated myself to mastering Computer Applications while nurturing an unyielding passion for personal discipline and discovery.
+          </p>
+
+          <p class="text-base leading-relaxed text-slate-400">
+            Having earned my <strong class="text-slate-200">Bachelor of Computer Application (BCA)</strong> from the esteemed <strong class="text-cyan-400">MMHAP University, Patna</strong>, I am actively advancing towards my Master's degree. I view technology not merely as code, but as an infinite canvas for creativity and problem-solving.
+          </p>
+
+          <!-- Core Pillars Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+            
+            <div class="glass-panel p-5 rounded-xl border border-slate-800 hover:border-cyan-500/40 transition-all">
+              <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-3">
+                <i data-lucide="cpu" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-display font-bold text-base text-slate-100 mb-1">Tech & Computer Applications</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">Comprehensive grounding in software fundamentals, databases, logic, and web architecture.</p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl border border-slate-800 hover:border-purple-500/40 transition-all">
+              <div class="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-3">
+                <i data-lucide="dumbbell" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-display font-bold text-base text-slate-100 mb-1">Gym & Iron Fortitude</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">Daily gym dedication, strength conditioning, and physical discipline shaping a resilient mindset.</p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl border border-slate-800 hover:border-blue-500/40 transition-all">
+              <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-3">
+                <i data-lucide="map" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-display font-bold text-base text-slate-100 mb-1">Sojourning & Exploration</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">Wanderlust spirit driven to experience new destinations, scenic terrains, and vibrant cultures.</p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl border border-slate-800 hover:border-pink-500/40 transition-all">
+              <div class="w-10 h-10 rounded-lg bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 mb-3">
+                <i data-lucide="clapperboard" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-display font-bold text-base text-slate-100 mb-1">Cinema & Digital Culture</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">Admirer of cinematic art, screen storytelling, and staying connected on contemporary social media.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================================
+       EDUCATIONAL ODYSSEY (TIMELINE ROADMAP)
+  ============================================================= -->
+  <section id="journey" class="py-28 px-4 md:px-8 relative bg-slate-950/40">
+    <div class="section-watermark">JOURNEY</div>
+
+    <div id="journeySection" class="max-w-5xl mx-auto relative z-10">
+      
+      <!-- Section Title -->
+      <div class="reveal-title text-center mb-20">
+        <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 tracking-[0.2em] uppercase mb-3">
+          <span class="w-6 h-px bg-cyan-400"></span>
+          <span>02 // ACADEMIC ROADMAP</span>
+          <span class="w-6 h-px bg-cyan-400"></span>
+        </div>
+        <h2 class="font-display font-extrabold text-4xl md:text-5xl text-slate-100 mb-4">
+          The <span class="text-gradient-cyan">Educational Odyssey</span>
+        </h2>
+        <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto">
+          Tracing my academic milestones from early school foundations in Katihar to university graduation in Patna and my current pursuit of Master's.
+        </p>
+      </div>
+
+      <!-- Timeline Container -->
+      <div class="relative">
+        
+        <!-- Central Glowing Progress Line (Animated via ScrollTrigger) -->
+        <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-[3px] -translate-x-1/2 bg-slate-800">
+          <div id="timelineProgressLine" class="w-full h-0 timeline-track-glow rounded-full"></div>
+        </div>
+
+        <!-- Milestones List -->
+        <div class="space-y-12">
+
+          <!-- Milestone 1: Sweet Children School -->
+          <div class="education-milestone relative flex flex-col md:flex-row items-start md:items-center justify-between">
+            <div class="md:w-5/12 pl-16 md:pl-0 md:text-right order-2 md:order-1">
+              <span class="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-[11px] font-mono mb-2 border border-cyan-500/20">FOUNDATION</span>
+              <h3 class="font-display font-bold text-xl text-slate-100">Sweet Children School</h3>
+              <p class="text-xs text-slate-400 mt-1">Early childhood learning, sparking curiosity, language foundations, and personal development.</p>
+            </div>
+
+            <!-- Node Pin -->
+            <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-slate-900 border-2 border-cyan-400 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(0,242,254,0.5)] z-20 order-1 md:order-2">
+              <i data-lucide="book-open" class="w-4 h-4"></i>
+            </div>
+
+            <div class="hidden md:block md:w-5/12 order-3 pl-8 text-xs font-mono text-slate-500">
+              <span>Primary Stage • Early Schooling</span>
+            </div>
+          </div>
+
+          <!-- Milestone 2: Scottish Public School -->
+          <div class="education-milestone relative flex flex-col md:flex-row items-start md:items-center justify-between">
+            <div class="hidden md:block md:w-5/12 text-right pr-8 text-xs font-mono text-slate-500 order-1">
+              <span>Academic Progression • Middle School</span>
+            </div>
+
+            <!-- Node Pin -->
+            <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-slate-900 border-2 border-blue-400 flex items-center justify-center text-blue-400 shadow-[0_0_15px_rgba(79,172,254,0.5)] z-20 order-1 md:order-2">
+              <i data-lucide="award" class="w-4 h-4"></i>
+            </div>
+
+            <div class="md:w-5/12 pl-16 md:pl-8 order-2 md:order-3">
+              <span class="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-300 text-[11px] font-mono mb-2 border border-blue-500/20">DEVELOPMENT</span>
+              <h3 class="font-display font-bold text-xl text-slate-100">Scottish Public School</h3>
+              <p class="text-xs text-slate-400 mt-1">Disciplined learning environment, broadening scholastic interests, mathematical acumen, and teamwork.</p>
+            </div>
+          </div>
+
+          <!-- Milestone 3: Deep English School -->
+          <div class="education-milestone relative flex flex-col md:flex-row items-start md:items-center justify-between">
+            <div class="md:w-5/12 pl-16 md:pl-0 md:text-right order-2 md:order-1">
+              <span class="inline-block px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 text-[11px] font-mono mb-2 border border-indigo-500/20">GROWTH</span>
+              <h3 class="font-display font-bold text-xl text-slate-100">Deep English School</h3>
+              <p class="text-xs text-slate-400 mt-1">Comprehensive English-medium curriculum, strengthening analytical faculties, science and language mastery.</p>
+            </div>
+
+            <!-- Node Pin -->
+            <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-slate-900 border-2 border-indigo-400 flex items-center justify-center text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.5)] z-20 order-1 md:order-2">
+              <i data-lucide="compass" class="w-4 h-4"></i>
+            </div>
+
+            <div class="hidden md:block md:w-5/12 order-3 pl-8 text-xs font-mono text-slate-500">
+              <span>English Medium Instruction • Foundational Science</span>
+            </div>
+          </div>
+
+          <!-- Milestone 4: Maheshwari Academy -->
+          <div class="education-milestone relative flex flex-col md:flex-row items-start md:items-center justify-between">
+            <div class="hidden md:block md:w-5/12 text-right pr-8 text-xs font-mono text-slate-500 order-1">
+              <span>Secondary High School Milestone</span>
+            </div>
+
+            <!-- Node Pin -->
+            <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-slate-900 border-2 border-purple-400 flex items-center justify-center text-purple-400 shadow-[0_0_15px_rgba(121,40,202,0.5)] z-20 order-1 md:order-2">
+              <i data-lucide="shield" class="w-4 h-4"></i>
+            </div>
+
+            <div class="md:w-5/12 pl-16 md:pl-8 order-2 md:order-3">
+              <span class="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-[11px] font-mono mb-2 border border-purple-500/20">SECONDARY</span>
+              <h3 class="font-display font-bold text-xl text-slate-100">Maheshwari Academy</h3>
+              <p class="text-xs text-slate-400 mt-1">Rigorous secondary academy curriculum, solidifying academic focus, discipline, and board examinations.</p>
+            </div>
+          </div>
+
+          <!-- Milestone 5: Darshan Shah College, Katihar -->
+          <div class="education-milestone relative flex flex-col md:flex-row items-start md:items-center justify-between">
+            <div class="md:w-5/12 pl-16 md:pl-0 md:text-right order-2 md:order-1">
+              <span class="inline-block px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-[11px] font-mono mb-2 border border-amber-500/20">COLLEGE FOUNDATION</span>
+              <h3 class="font-display font-bold text-xl text-slate-100">Darshan Shah College</h3>
+              <div class="text-xs font-mono text-amber-400 mt-0.5">Katihar, Bihar</div>
+              <p class="text-xs text-slate-400 mt-1">Collegiate education in Katihar, cultivating independent study habits and preparing for university degrees in computing.</p>
+            </div>
+
+            <!-- Node Pin -->
+            <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-slate-900 border-2 border-amber-400 flex items-center justify-center text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.5)] z-20 order-1 md:order-2">
+              <i data-lucide="building" class="w-4 h-4"></i>
+            </div>
+
+            <div class="hidden md:block md:w-5/12 order-3 pl-8 text-xs font-mono text-slate-500">
+              <span>Higher Secondary & Collegiate Grounds • Katihar</span>
+            </div>
+          </div>
+
+          <!-- Milestone 6: MMHAP University (BCA) -->
+          <div class="education-milestone relative flex flex-col md:flex-row items-start md:items-center justify-between">
+            <div class="hidden md:block md:w-5/12 text-right pr-8 order-1">
+              <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-mono mb-2 border border-emerald-500/30">GRADUATION HIGHLIGHT</span>
+              <div class="text-xs font-mono text-slate-400">Patna, Bihar, India</div>
+            </div>
+
+            <!-- Node Pin (Emphasized) -->
+            <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-tr from-cyan-400 to-emerald-400 flex items-center justify-center text-slate-950 font-black shadow-[0_0_25px_rgba(0,242,254,0.8)] z-20 order-1 md:order-2">
+              <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+            </div>
+
+            <div class="md:w-5/12 pl-16 md:pl-8 order-2 md:order-3">
+              <div class="glass-panel-glow p-5 rounded-2xl border border-cyan-500/40">
+                <span class="inline-block px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-[11px] font-mono mb-2 border border-cyan-500/30 font-semibold">GRADUATE DEGREE</span>
+                <h3 class="font-display font-extrabold text-2xl text-white">Bachelor of Computer Application (BCA)</h3>
+                <div class="text-sm font-semibold text-cyan-300 mt-1">MMHAP University, Patna, Bihar</div>
+                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                  Rigorous immersion in computer applications, programming paradigms, software development life cycle, databases, data structures, and IT management.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Milestone 7: The Master's Horizon (Present) -->
+          <div class="education-milestone relative flex flex-col md:flex-row items-start md:items-center justify-between">
+            <div class="md:w-5/12 pl-16 md:pl-0 md:text-right order-2 md:order-1">
+              <span class="inline-block px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-[11px] font-mono mb-2 border border-purple-500/40">PRESENT & FUTURE</span>
+              <h3 class="font-display font-extrabold text-2xl text-white">Pursuing Master's Degree</h3>
+              <div class="text-xs font-mono text-purple-400 mt-0.5">Advanced Computer Science / Applications</div>
+              <p class="text-xs text-slate-400 mt-1">Currently advancing academic horizon into postgraduate specialization, deepening theoretical acumen and industry-grade application architecture.</p>
+            </div>
+
+            <!-- Node Pin -->
+            <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-slate-900 border-2 border-purple-400 flex items-center justify-center text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.5)] z-20 order-1 md:order-2">
+              <i data-lucide="zap" class="w-4 h-4"></i>
+            </div>
+
+            <div class="hidden md:block md:w-5/12 order-3 pl-8 text-xs font-mono text-purple-400 flex items-center gap-2">
+              <span class="pulse-beacon w-2 h-2 rounded-full bg-purple-400"></span>
+              <span>Active Horizon • Continuous Elevation</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================================
+       THE CIRCLE OF STRENGTH (FAMILY TRIBUTE)
+  ============================================================= -->
+  <section id="family" class="py-28 px-4 md:px-8 relative">
+    <div class="section-watermark">FAMILY</div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      
+      <!-- Section Title -->
+      <div class="reveal-title text-center mb-16">
+        <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 tracking-[0.2em] uppercase mb-3">
+          <span class="w-6 h-px bg-cyan-400"></span>
+          <span>03 // THE CIRCLE OF STRENGTH</span>
+          <span class="w-6 h-px bg-cyan-400"></span>
+        </div>
+        <h2 class="font-display font-extrabold text-4xl md:text-5xl text-slate-100 mb-4">
+          Kinship & <span class="text-gradient-gold">Beloved Family</span>
+        </h2>
+        <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto">
+          The true anchors of life — a heartfelt tribute to the pillars, brothers, sister, in-laws, and the delightful rising generation.
+        </p>
+
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap items-center justify-center gap-2.5 mt-8">
+          <button data-filter="all" class="family-filter-btn px-4 py-2 rounded-full text-xs font-mono tracking-wider uppercase border bg-cyan-500/20 text-cyan-300 border-cyan-500/40 transition-all">All Family</button>
+          <button data-filter="parents" class="family-filter-btn px-4 py-2 rounded-full text-xs font-mono tracking-wider uppercase border bg-slate-900/60 text-slate-400 border-slate-800 hover:border-slate-700 transition-all">Parents</button>
+          <button data-filter="brothers" class="family-filter-btn px-4 py-2 rounded-full text-xs font-mono tracking-wider uppercase border bg-slate-900/60 text-slate-400 border-slate-800 hover:border-slate-700 transition-all">Brothers</button>
+          <button data-filter="sister" class="family-filter-btn px-4 py-2 rounded-full text-xs font-mono tracking-wider uppercase border bg-slate-900/60 text-slate-400 border-slate-800 hover:border-slate-700 transition-all">Sister & In-Laws</button>
+          <button data-filter="nextgen" class="family-filter-btn px-4 py-2 rounded-full text-xs font-mono tracking-wider uppercase border bg-slate-900/60 text-slate-400 border-slate-800 hover:border-slate-700 transition-all">Next Gen</button>
+        </div>
+      </div>
+
+      <!-- Family Cards Grid -->
+      <div id="familyGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 reveal-stagger">
+        
+        <!-- Parents: Father -->
+        <div class="family-card reveal-item tilt-card glass-panel p-6 rounded-2xl border border-amber-500/30 hover:border-amber-400/60 transition-all group" data-category="parents">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full bg-amber-500/15 text-amber-400 text-[10px] font-mono tracking-wider uppercase border border-amber-500/30">FATHER • PATRIARCH</span>
+            <div class="w-8 h-8 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-400">
+              <i data-lucide="crown" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <h3 class="font-display font-extrabold text-2xl text-slate-100 group-hover:text-amber-300 transition-colors">Abdul Kalam</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            The foundation of wisdom, integrity, and relentless support guiding every milestone.
+          </p>
+        </div>
+
+        <!-- Parents: Mother -->
+        <div class="family-card reveal-item tilt-card glass-panel p-6 rounded-2xl border border-amber-500/30 hover:border-amber-400/60 transition-all group" data-category="parents">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full bg-amber-500/15 text-amber-400 text-[10px] font-mono tracking-wider uppercase border border-amber-500/30">MOTHER • MATRIARCH</span>
+            <div class="w-8 h-8 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-400">
+              <i data-lucide="heart" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <h3 class="font-display font-extrabold text-2xl text-slate-100 group-hover:text-amber-300 transition-colors">Sairun Nisha</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            The heart and blessing of the home, whose prayers, unconditional love, and warmth illuminate life.
+          </p>
+        </div>
+
+        <!-- Brother 1: Anwar Ansari -->
+        <div class="family-card reveal-item tilt-card glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-all group" data-category="brothers">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-[10px] font-mono tracking-wider uppercase border border-cyan-500/20">BROTHER</span>
+            <div class="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+              <i data-lucide="shield" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-100 group-hover:text-cyan-300 transition-colors">Anwar Ansari</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Pillar of brotherhood, steadfast solidarity, guidance, and trusted companionship.
+          </p>
+        </div>
+
+        <!-- Brother 2: Noor Alam -->
+        <div class="family-card reveal-item tilt-card glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-all group" data-category="brothers">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-[10px] font-mono tracking-wider uppercase border border-cyan-500/20">BROTHER</span>
+            <div class="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+              <i data-lucide="shield" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-100 group-hover:text-cyan-300 transition-colors">Noor Alam</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Embodying light, unwavering support, and strength in every step of the family's journey.
+          </p>
+        </div>
+
+        <!-- Brother 3: Asif Alam -->
+        <div class="family-card reveal-item tilt-card glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-all group" data-category="brothers">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-[10px] font-mono tracking-wider uppercase border border-cyan-500/20">BROTHER</span>
+            <div class="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+              <i data-lucide="shield" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-100 group-hover:text-cyan-300 transition-colors">Asif Alam</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Loyalty, camaraderie, and an enduring bond of brothers who stand shoulder to shoulder.
+          </p>
+        </div>
+
+        <!-- Brother 4: Taj Alam -->
+        <div class="family-card reveal-item tilt-card glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-all group" data-category="brothers">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-[10px] font-mono tracking-wider uppercase border border-cyan-500/20">BROTHER</span>
+            <div class="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+              <i data-lucide="shield" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-100 group-hover:text-cyan-300 transition-colors">Taj Alam</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            The bond of brotherhood, shared memories, laughter, and family pride.
+          </p>
+        </div>
+
+        <!-- Sister: Khusbu Parween -->
+        <div class="family-card reveal-item tilt-card glass-panel p-6 rounded-2xl border border-pink-500/30 hover:border-pink-400/60 transition-all group" data-category="sister">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full bg-pink-500/15 text-pink-300 text-[10px] font-mono tracking-wider uppercase border border-pink-500/30">BELOVED SISTER</span>
+            <div class="w-8 h-8 rounded-full bg-pink-500/10 flex items-center justify-center text-pink-400">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-100 group-hover:text-pink-300 transition-colors">Khusbu Parween</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Cherished sister bringing tenderness, happiness, respect, and enduring love to the household.
+          </p>
+        </div>
+
+        <!-- Sister-in-law: Sabila Khatoon -->
+        <div class="family-card reveal-item tilt-card glass-panel p-6 rounded-2xl border border-slate-800 hover:border-purple-500/50 transition-all group" data-category="sister">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full bg-purple-500/15 text-purple-300 text-[10px] font-mono tracking-wider uppercase border border-purple-500/30">SISTER-IN-LAW</span>
+            <div class="w-8 h-8 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400">
+              <i data-lucide="flower" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-100 group-hover:text-purple-300 transition-colors">Sabila Khatoon</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Grace, family harmony, and respectful affection enriching the home.
+          </p>
+        </div>
+
+        <!-- Sister-in-law: Gazala Khatoon -->
+        <div class="family-card reveal-item tilt-card glass-panel p-6 rounded-2xl border border-slate-800 hover:border-purple-500/50 transition-all group" data-category="sister">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full bg-purple-500/15 text-purple-300 text-[10px] font-mono tracking-wider uppercase border border-purple-500/30">SISTER-IN-LAW</span>
+            <div class="w-8 h-8 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400">
+              <i data-lucide="flower" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-100 group-hover:text-purple-300 transition-colors">Gazala Khatoon</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Warmth, unity, and shared family values weaving together happiness.
+          </p>
+        </div>
+
+        <!-- Nephew: Ayan Ansari -->
+        <div class="family-card reveal-item tilt-card glass-panel p-6 rounded-2xl border border-emerald-500/30 hover:border-emerald-400/60 transition-all group" data-category="nextgen">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-[10px] font-mono tracking-wider uppercase border border-emerald-500/30">NEPHEW • RISING STAR</span>
+            <div class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+              <i data-lucide="smile" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-100 group-hover:text-emerald-300 transition-colors">Ayan Ansari</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            The joy and playful brilliance of the family, full of energy and boundless potential.
+          </p>
+        </div>
+
+        <!-- Nephew: Hamza Alam -->
+        <div class="family-card reveal-item tilt-card glass-panel p-6 rounded-2xl border border-emerald-500/30 hover:border-emerald-400/60 transition-all group" data-category="nextgen">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-[10px] font-mono tracking-wider uppercase border border-emerald-500/30">NEPHEW • BRIGHT FUTURE</span>
+            <div class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+              <i data-lucide="star" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-100 group-hover:text-emerald-300 transition-colors">Hamza Alam</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Endless curiosity, bright smiles, and the future flag-bearer of the family legacy.
+          </p>
+        </div>
+
+        <!-- Niece: Aliya Perween -->
+        <div class="family-card reveal-item tilt-card glass-panel p-6 rounded-2xl border border-rose-500/30 hover:border-rose-400/60 transition-all group" data-category="nextgen">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full bg-rose-500/15 text-rose-300 text-[10px] font-mono tracking-wider uppercase border border-rose-500/30">NIECE • SWEET PRINCESS</span>
+            <div class="w-8 h-8 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-400">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-100 group-hover:text-rose-300 transition-colors">Aliya Perween</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            The beloved sweet niece bringing joy, innocent laughter, and sunshine into everyone's hearts.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================================
+       PASSIONS & LIFESTYLE (HOBBIES BENTO)
+  ============================================================= -->
+  <section id="passions" class="py-28 px-4 md:px-8 relative bg-slate-950/40">
+    <div class="section-watermark">PASSIONS</div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      
+      <!-- Section Title -->
+      <div class="reveal-title text-center mb-16">
+        <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 tracking-[0.2em] uppercase mb-3">
+          <span class="w-6 h-px bg-cyan-400"></span>
+          <span>04 // BEYOND ACADEMICS</span>
+          <span class="w-6 h-px bg-cyan-400"></span>
+        </div>
+        <h2 class="font-display font-extrabold text-4xl md:text-5xl text-slate-100 mb-4">
+          Passions, Hobbies & <span class="text-gradient-cyan">Lifestyle</span>
+        </h2>
+        <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto">
+          Life is an adventure. From the iron sanctuary of the gym to traversing new cities, cinema screens, and endless curiosity.
+        </p>
+      </div>
+
+      <!-- Bento Grid of 5 Hobbies -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 reveal-stagger">
+        
+        <!-- Hobby 1: Gym & Bodybuilding (Featuring Gym Photo) -->
+        <div class="hobby-card md:col-span-8 reveal-item tilt-card glass-panel rounded-3xl p-8 border border-slate-800 hover:border-cyan-500/50 transition-all relative overflow-hidden group">
+          <div class="absolute right-0 top-0 bottom-0 w-1/2 opacity-25 group-hover:opacity-40 transition-opacity hidden sm:block">
+            <img src="assets/images/photo2_fitness_portrait.jpg" alt="Gym & Fitness" class="w-full h-full object-cover object-center filter grayscale group-hover:grayscale-0 transition-all duration-700">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0d1321] via-[#0d1321]/80 to-transparent"></div>
+          </div>
+          
+          <div class="relative z-10 max-w-lg">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-5">
+              <i data-lucide="dumbbell" class="w-6 h-6"></i>
+            </div>
+            <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest font-semibold">DAILY DISCIPLINE</span>
+            <h3 class="font-display font-extrabold text-3xl text-white mt-1 mb-3">Gym & Fitness</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              For me, the gym is more than workouts; it is an iron cathedral where mental resilience is forged. Pushing heavy weights, conditioning, discipline, and sculpturing physical vitality form the foundation of my daily energy.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs font-mono">
+              <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300">Strength Training</span>
+              <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300">Bodybuilding</span>
+              <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300">Mental Toughness</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hobby 2: Sojourning New Places -->
+        <div class="hobby-card md:col-span-4 reveal-item tilt-card glass-panel rounded-3xl p-8 border border-slate-800 hover:border-purple-500/50 transition-all group">
+          <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5">
+            <i data-lucide="plane" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-mono text-purple-400 uppercase tracking-widest font-semibold">WANDERLUST</span>
+          <h3 class="font-display font-extrabold text-2xl text-white mt-1 mb-3">Sojourning New Places</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-6">
+            Traveling to unfamiliar terrains, soaking in different cultural atmospheres, road trips, and taking in new landscapes that expand perspectives.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-400">Road Trips</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-400">Cultural Vistas</span>
+          </div>
+        </div>
+
+        <!-- Hobby 3: Exploring New Things -->
+        <div class="hobby-card md:col-span-4 reveal-item tilt-card glass-panel rounded-3xl p-8 border border-slate-800 hover:border-emerald-500/50 transition-all group">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-5">
+            <i data-lucide="compass" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest font-semibold">CURIOSITY & MINDSET</span>
+          <h3 class="font-display font-extrabold text-2xl text-white mt-1 mb-3">Exploring New Things</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-6">
+            Constant curiosity: diving into newly discovered tech gadgets, unconventional thinking, exploring software tools, and self-education.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-400">Tech Gadgets</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-400">Innovation</span>
+          </div>
+        </div>
+
+        <!-- Hobby 4: Movie Watching & Cinema -->
+        <div class="hobby-card md:col-span-4 reveal-item tilt-card glass-panel rounded-3xl p-8 border border-slate-800 hover:border-amber-500/50 transition-all group">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-5">
+            <i data-lucide="film" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-mono text-amber-400 uppercase tracking-widest font-semibold">THE 7TH ART</span>
+          <h3 class="font-display font-extrabold text-2xl text-white mt-1 mb-3">Movie Watching</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-6">
+            Passionate cinema lover. Captivated by powerful direction, gripping plotlines, aesthetic cinematography, sound design, and emotional storytelling.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-400">Cinematography</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-400">Blockbusters</span>
+          </div>
+        </div>
+
+        <!-- Hobby 5: Social Media & Digital Presence -->
+        <div class="hobby-card md:col-span-4 reveal-item tilt-card glass-panel rounded-3xl p-8 border border-slate-800 hover:border-blue-500/50 transition-all group">
+          <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-5">
+            <i data-lucide="share-2" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-mono text-blue-400 uppercase tracking-widest font-semibold">DIGITAL LIFE</span>
+          <h3 class="font-display font-extrabold text-2xl text-white mt-1 mb-3">Social Media Active</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-6">
+            Active on social media platforms, networking with peers, sharing snapshots of travels, aesthetic fitness moments, and staying in sync with digital trends.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-400">Networking</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-400">Digital Trends</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================================
+       THE VISUAL CHRONICLES (PHOTO GALLERY & LIGHTBOX)
+  ============================================================= -->
+  <section id="gallery" class="py-28 px-4 md:px-8 relative">
+    <div class="section-watermark">CHRONICLES</div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      
+      <!-- Section Title -->
+      <div class="reveal-title text-center mb-16">
+        <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 tracking-[0.2em] uppercase mb-3">
+          <span class="w-6 h-px bg-cyan-400"></span>
+          <span>05 // THE VISUAL CHRONICLES</span>
+          <span class="w-6 h-px bg-cyan-400"></span>
+        </div>
+        <h2 class="font-display font-extrabold text-4xl md:text-5xl text-slate-100 mb-4">
+          Capturing The <span class="text-gradient-cyan">Moments</span>
+        </h2>
+        <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto">
+          A visual collection of portraits celebrating fitness, streetwear, city wanderlust, and style. Click any image to view in full cinematic scale.
+        </p>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
+        
+        <!-- Photo 1: Gym Dramatic -->
+        <div class="gallery-card reveal-item group border border-slate-800" data-title="The Iron Sanctuary" data-desc="Intense concentration and muscular definition under dramatic studio lighting.">
+          <div class="aspect-[3/4] overflow-hidden bg-slate-900">
+            <img src="assets/images/photo3_gym_dramatic.jpg" alt="Altaf Alam - Gym Dramatic Lighting" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-overlay p-6 flex flex-col justify-end">
+            <span class="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">FITNESS SERIES</span>
+            <h4 class="font-display font-bold text-xl text-white mt-1">The Iron Sanctuary</h4>
+            <p class="text-xs text-slate-300 mt-1">Focus, strength, and athletic dedication.</p>
+            <div class="mt-4 flex items-center gap-2 text-xs font-mono text-cyan-300">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+              <span>Expand Preview</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 2: Night City Streetwear -->
+        <div class="gallery-card reveal-item group border border-slate-800" data-title="Urban Midnight Lights" data-desc="Evening streetwear silhouette leaning on illuminated architecture in the city.">
+          <div class="aspect-[3/4] overflow-hidden bg-slate-900">
+            <img src="assets/images/photo4_night_street.jpg" alt="Altaf Alam - Night Street Style" class="w-full h-full object-cover object-top">
+          </div>
+          <div class="gallery-overlay p-6 flex flex-col justify-end">
+            <span class="text-[10px] font-mono text-purple-400 uppercase tracking-widest">NIGHT LIFESTYLE</span>
+            <h4 class="font-display font-bold text-xl text-white mt-1">Urban Midnight Lights</h4>
+            <p class="text-xs text-slate-300 mt-1">Evening serenity, city lights, and streetwear aesthetics.</p>
+            <div class="mt-4 flex items-center gap-2 text-xs font-mono text-purple-300">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+              <span>Expand Preview</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 3: Levi's Studio Look -->
+        <div class="gallery-card reveal-item group border border-slate-800" data-title="The Classic Stance" data-desc="Contemporary button-down shirt look with Levi's studio backdrop.">
+          <div class="aspect-[3/4] overflow-hidden bg-slate-900">
+            <img src="assets/images/photo1_studio.jpg" alt="Altaf Alam - Studio Stance" class="w-full h-full object-cover object-top">
+          </div>
+          <div class="gallery-overlay p-6 flex flex-col justify-end">
+            <span class="text-[10px] font-mono text-amber-400 uppercase tracking-widest">STUDIO CASUAL</span>
+            <h4 class="font-display font-bold text-xl text-white mt-1">The Classic Stance</h4>
+            <p class="text-xs text-slate-300 mt-1">Confidence, style, and natural composure.</p>
+            <div class="mt-4 flex items-center gap-2 text-xs font-mono text-amber-300">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+              <span>Expand Preview</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 4: Mall Atrium Lifestyle -->
+        <div class="gallery-card reveal-item group border border-slate-800 sm:col-span-2 lg:col-span-1" data-title="Modern Promenade" data-desc="Clean white tee style in a modern glass and steel architectural setting.">
+          <div class="aspect-[3/4] overflow-hidden bg-slate-900">
+            <img src="assets/images/photo5_mall_lifestyle.jpg" alt="Altaf Alam - Modern Mall Promenade" class="w-full h-full object-cover object-top">
+          </div>
+          <div class="gallery-overlay p-6 flex flex-col justify-end">
+            <span class="text-[10px] font-mono text-blue-400 uppercase tracking-widest">CONTEMPORARY</span>
+            <h4 class="font-display font-bold text-xl text-white mt-1">Modern Promenade</h4>
+            <p class="text-xs text-slate-300 mt-1">Minimalist casual fashion amidst expansive architecture.</p>
+            <div class="mt-4 flex items-center gap-2 text-xs font-mono text-blue-300">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+              <span>Expand Preview</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 5: Fitness Close-Up Portrait -->
+        <div class="gallery-card reveal-item group border border-slate-800 sm:col-span-2 lg:col-span-2" data-title="Discipline & Direct Vision" data-desc="Close-up portrait showcasing focused expression and athletic fitness.">
+          <div class="aspect-[16/10] overflow-hidden bg-slate-900">
+            <img src="assets/images/photo2_fitness_portrait.jpg" alt="Altaf Alam - Fitness Portrait" class="w-full h-full object-cover object-center">
+          </div>
+          <div class="gallery-overlay p-6 sm:p-8 flex flex-col justify-end">
+            <span class="text-[10px] font-mono text-rose-400 uppercase tracking-widest">PORTRAIT & GAZE</span>
+            <h4 class="font-display font-bold text-2xl text-white mt-1">Discipline & Direct Vision</h4>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1">Grounded in purpose, focused on continuous self-mastery.</p>
+            <div class="mt-4 flex items-center gap-2 text-xs font-mono text-rose-300">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+              <span>Expand Preview</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================================
+       FULLSCREEN LIGHTBOX MODAL
+  ============================================================= -->
+  <div id="lightboxModal" class="fixed inset-0 z-[95] bg-black/95 backdrop-blur-2xl opacity-0 pointer-events-none flex flex-col items-center justify-center p-4 sm:p-8">
+    
+    <!-- Controls Header -->
+    <div class="absolute top-6 inset-x-6 flex items-center justify-between z-20">
+      <div class="flex items-center gap-3">
+        <span class="font-cinematic font-bold text-gradient-cyan text-base">ALTAF ALAM</span>
+        <span class="text-slate-600">|</span>
+        <span id="lightboxCounter" class="text-xs font-mono text-slate-400">1 / 5</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="lightboxPrev" class="p-2.5 rounded-full bg-slate-900 border border-slate-700 text-slate-200 hover:text-cyan-400 hover:border-cyan-500 transition-all" title="Previous Image (Left Arrow)">
+          <i data-lucide="chevron-left" class="w-5 h-5"></i>
+        </button>
+        <button id="lightboxNext" class="p-2.5 rounded-full bg-slate-900 border border-slate-700 text-slate-200 hover:text-cyan-400 hover:border-cyan-500 transition-all" title="Next Image (Right Arrow)">
+          <i data-lucide="chevron-right" class="w-5 h-5"></i>
+        </button>
+        <button id="lightboxClose" class="p-2.5 rounded-full bg-slate-900 border border-slate-700 text-slate-200 hover:text-red-400 hover:border-red-500 transition-all" title="Close (ESC)">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Center Stage -->
+    <div class="lightbox-content relative max-w-4xl max-h-[75vh] w-full flex flex-col items-center justify-center transform scale-95 transition-transform duration-300">
+      <img id="lightboxImg" src="" alt="Altaf Alam Lightbox Preview" class="max-w-full max-h-[70vh] object-contain rounded-xl shadow-2xl border border-white/10">
+      
+      <!-- Caption footer -->
+      <div class="mt-4 text-center max-w-xl">
+        <h4 id="lightboxTitle" class="font-display font-bold text-xl text-white">Title</h4>
+        <p id="lightboxDesc" class="text-xs text-slate-400 mt-1">Description</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- =============================================================
+       CONNECT & GET IN TOUCH
+  ============================================================= -->
+  <section id="contact" class="py-28 px-4 md:px-8 relative bg-slate-950/60">
+    <div class="section-watermark">CONNECT</div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+      
+      <!-- Section Title -->
+      <div class="reveal-title text-center mb-16">
+        <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 tracking-[0.2em] uppercase mb-3">
+          <span class="w-6 h-px bg-cyan-400"></span>
+          <span>06 // INITIATE TRANSMISSION</span>
+          <span class="w-6 h-px bg-cyan-400"></span>
+        </div>
+        <h2 class="font-display font-extrabold text-4xl md:text-5xl text-slate-100 mb-4">
+          Let's Build & <span class="text-gradient-cyan">Collaborate</span>
+        </h2>
+        <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto">
+          Whether you want to discuss technology, academic opportunities, or simply say hello — feel free to drop a message.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <!-- Left: Contact Details Card -->
+        <div class="lg:col-span-5 reveal-item flex flex-col justify-between glass-panel p-8 rounded-3xl border border-slate-800 shadow-2xl">
+          <div>
+            <div class="font-display font-bold text-2xl text-slate-100 mb-1">Altaf Alam</div>
+            <p class="text-xs text-cyan-400 font-mono mb-4">BCA Graduate • Master's Candidate</p>
+            
+            <!-- Direct communication notice box -->
+            <div class="p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 mb-6">
+              <div class="flex items-center gap-2 text-cyan-300 text-xs font-mono font-semibold mb-1">
+                <i data-lucide="bell" class="w-3.5 h-3.5 text-cyan-400"></i>
+                <span>DIRECT CONNECTION NOTE:</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                If you want to connect with me or send a message across any communication platform, please text or reach out to me directly using either my <strong class="text-cyan-300">Gmail</strong> or <strong class="text-emerald-300">Phone number</strong> below:
+              </p>
+            </div>
+
+            <div class="space-y-4 text-sm text-slate-300">
+              
+              <!-- Gmail Card -->
+              <a href="mailto:smartaltafalam363@gmail.com?subject=Connecting%20with%20Altaf%20Alam" class="flex items-center gap-4 p-3 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-cyan-400/50 hover:bg-slate-900 transition-all group">
+                <div class="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div class="overflow-hidden">
+                  <div class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">OFFICIAL GMAIL</div>
+                  <div class="font-semibold text-slate-100 group-hover:text-cyan-300 transition-colors truncate">smartaltafalam363@gmail.com</div>
+                </div>
+              </a>
+
+              <!-- Phone & WhatsApp Card -->
+              <a href="https://wa.me/919122013960?text=Hello%20Altaf,%20I%20would%20like%20to%20connect%20with%20you!" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-400/50 hover:bg-slate-900 transition-all group">
+                <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <i class="fab fa-whatsapp text-xl"></i>
+                </div>
+                <div>
+                  <div class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">PHONE & WHATSAPP</div>
+                  <div class="font-semibold text-slate-100 group-hover:text-emerald-300 transition-colors">+91 9122013960</div>
+                </div>
+              </a>
+
+              <!-- Instagram Card -->
+              <a href="https://www.instagram.com/altafansarie/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-3 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-pink-400/50 hover:bg-slate-900 transition-all group">
+                <div class="w-11 h-11 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <i class="fab fa-instagram text-xl"></i>
+                </div>
+                <div>
+                  <div class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">INSTAGRAM PROFILE</div>
+                  <div class="font-semibold text-slate-100 group-hover:text-pink-300 transition-colors">@altafansarie</div>
+                </div>
+              </a>
+
+              <!-- Location Card -->
+              <div class="flex items-center gap-4 p-3 rounded-2xl bg-slate-900/30 border border-slate-800/60">
+                <div class="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 flex-shrink-0">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-[10px] font-mono text-slate-500 uppercase">LOCATION & RESIDENCE</div>
+                  <div class="font-semibold text-slate-200">Katihar & Patna, Bihar, India</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Download vCard Pill -->
+          <div class="pt-6 border-t border-slate-800/80 mt-6">
+            <button id="downloadVcardBtn" class="w-full btn-cinematic py-3 px-5 rounded-xl bg-slate-900 border border-cyan-500/40 hover:bg-cyan-500/10 text-cyan-300 font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-3 transition-all">
+              <i data-lucide="contact" class="w-4 h-4"></i>
+              <span>Save Altaf Alam to Contacts (.vcf)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Fast Direct Action Form -->
+        <div class="lg:col-span-7 reveal-item">
+          <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl">
+            
+            <div class="mb-6">
+              <h3 class="font-display font-bold text-xl text-white">Send Direct Message</h3>
+              <p class="text-xs text-slate-400 mt-1">Fill this form to dispatch directly to Altaf via WhatsApp or Gmail instantly.</p>
+            </div>
+
+            <!-- Instant One-Click Action Buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+              <a href="https://wa.me/919122013960?text=Hello%20Altaf,%20I%20would%20like%20to%20connect%20with%20you!" target="_blank" rel="noopener noreferrer" class="btn-cinematic flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all shadow-lg shadow-emerald-600/20">
+                <i class="fab fa-whatsapp text-base"></i>
+                <span>Direct WhatsApp Chat</span>
+              </a>
+              <a href="mailto:smartaltafalam363@gmail.com?subject=Official%20Profile%20Inquiry" class="btn-cinematic flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-xs transition-all shadow-lg shadow-cyan-600/20">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                <span>Send via Gmail</span>
+              </a>
+            </div>
+
+            <form id="contactForm" class="space-y-5">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="name" class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Your Name</label>
+                  <input type="text" id="name" required placeholder="e.g. Alex Morgan" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700/80 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-400 text-sm transition-colors">
+                </div>
+                <div>
+                  <label for="email" class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Email Address</label>
+                  <input type="email" id="email" required placeholder="alex@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700/80 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-400 text-sm transition-colors">
+                </div>
+              </div>
+
+              <div>
+                <label for="subject" class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Subject / Topic</label>
+                <input type="text" id="subject" required placeholder="Project collaboration, academic chat, or general message" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700/80 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-400 text-sm transition-colors">
+              </div>
+
+              <div>
+                <label for="message" class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Message</label>
+                <textarea id="message" rows="4" required placeholder="Type your message here..." class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700/80 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-400 text-sm transition-colors resize-none"></textarea>
+              </div>
+
+              <div id="formSuccess" class="hidden p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono space-y-2">
+                <div class="flex items-center gap-2 font-bold text-emerald-400">
+                  <i data-lucide="check-circle" class="w-4 h-4"></i>
+                  <span>Message formatted! Select your preferred transmission channel:</span>
+                </div>
+                <div class="flex flex-wrap gap-3 pt-2">
+                  <a id="dispatchWhatsApp" href="#" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-sans text-xs font-semibold flex items-center gap-1.5 hover:bg-emerald-500">
+                    <i class="fab fa-whatsapp"></i> Send on WhatsApp
+                  </a>
+                  <a id="dispatchEmail" href="#" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white font-sans text-xs font-semibold flex items-center gap-1.5 hover:bg-cyan-500">
+                    <i data-lucide="mail" class="w-3.5 h-3.5"></i> Open in Gmail
+                  </a>
+                </div>
+              </div>
+
+              <button type="submit" class="w-full btn-cinematic py-3.5 px-6 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-slate-950 font-bold text-sm tracking-wider uppercase shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/40 flex items-center justify-center gap-3 transition-all">
+                <span>Format & Transmit Message</span>
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================================
+       FOOTER
+  ============================================================= -->
+  <footer class="py-14 px-4 md:px-8 border-t border-slate-800/80 relative z-10 bg-[#040609]">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+      
+      <!-- Brand & Ownership Text -->
+      <div class="flex flex-col md:flex-row items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-400 to-purple-600 p-[1.5px] shadow-lg shadow-cyan-500/20">
+          <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center font-cinematic text-xs font-bold text-cyan-300">
+            AA
+          </div>
+        </div>
+        <div>
+          <!-- EXACT REQUESTED TEXT: Owned by Altaf Alam -->
+          <div class="font-display font-extrabold text-lg tracking-wider text-slate-100">
+            Owned by Altaf Alam
+          </div>
+          <div class="text-xs font-mono text-slate-400 mt-0.5 flex flex-wrap items-center justify-center md:justify-start gap-2">
+            <span>Instagram:</span>
+            <!-- EXACT REQUESTED LINK: @altafansarie -->
+            <a href="https://www.instagram.com/altafansarie/" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 font-semibold underline underline-offset-4 flex items-center gap-1">
+              <i class="fab fa-instagram"></i>
+              <span>@altafansarie</span>
+            </a>
+            <span class="text-slate-600">•</span>
+            <span>BCA (MMHAPU) • Katihar & Patna, Bihar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Contact Links in Footer -->
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
+        <a href="mailto:smartaltafalam363@gmail.com" class="px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 flex items-center gap-2 transition-all">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-cyan-400"></i>
+          <span>smartaltafalam363@gmail.com</span>
+        </a>
+        <a href="tel:+919122013960" class="px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 hover:border-emerald-500/50 text-slate-300 hover:text-emerald-300 flex items-center gap-2 transition-all">
+          <i class="fas fa-phone-alt text-emerald-400"></i>
+          <span>+91 9122013960</span>
+        </a>
+      </div>
+
+      <!-- Social Icons & Back to Top -->
+      <div class="flex items-center gap-4">
+        <a href="https://www.instagram.com/altafansarie/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-900 border border-slate-800 hover:border-pink-400 hover:text-pink-400 flex items-center justify-center transition-all text-slate-400" title="Instagram @altafansarie">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/919122013960" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-900 border border-slate-800 hover:border-emerald-400 hover:text-emerald-400 flex items-center justify-center transition-all text-slate-400" title="WhatsApp (+91 9122013960)">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:smartaltafalam363@gmail.com" class="w-9 h-9 rounded-full bg-slate-900 border border-slate-800 hover:border-cyan-400 hover:text-cyan-400 flex items-center justify-center transition-all text-slate-400" title="Email: smartaltafalam363@gmail.com">
+          <i class="far fa-envelope"></i>
+        </a>
+        <a href="#hero" class="p-2 rounded-full bg-slate-900 border border-slate-800 text-cyan-400 hover:text-cyan-300 transition-all ml-2" title="Back to Top">
+          <i data-lucide="arrow-up" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Engine -->
+  <script src="js/main.js"></script>
+</body>
+</html>
